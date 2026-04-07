@@ -1,0 +1,59 @@
+# Deshabilitar el listado de directorios
+Options -Indexes
+
+# Denegar acceso directo a los archivos en la carpeta uploads/documents
+RewriteEngine On
+
+# CONFIGURACIÓN PARA SERVIDOR PRODUCCIÓN (comentado)
+#RewriteCond %{REQUEST_URI} ^/uploads/documents/ [NC]
+#RewriteCond %{REQUEST_URI} ^/uploads/documents/ [NC]
+#RewriteCond %{REQUEST_URI} ^/uploads/material/ [NC]
+#RewriteCond %{REQUEST_URI} ^/uploads/material/ [NC]
+
+# CONFIGURACIÓN PARA MAC entorno local /
+RewriteCond %{REQUEST_URI} ^/uploads/documents/ [NC]
+RewriteCond %{REQUEST_URI} ^/uploads/material/ [NC]
+
+RewriteRule .* - [F]
+
+# Bloquear acceso directo a archivos PHP y otros sensibles
+<FilesMatch "\.(php|html|htm|json|pdf|js|css)$">
+    Require all denied
+</FilesMatch>
+
+# Permitir acceso a archivos PHP y otros recursos si son solicitados desde el servidor
+<FilesMatch "\.(php|html|htm|json|pdf|js|css)$">
+    Require all granted
+</FilesMatch>
+
+# Evitar la inyección de código malicioso en URLs
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Bloquear solicitudes con ".." que intentan acceder a directorios superiores
+    RewriteCond %{REQUEST_URI} \.\. [NC]
+    RewriteRule .* - [F]
+
+    # Bloquear caracteres especiales potencialmente peligrosos en URLs
+    RewriteCond %{QUERY_STRING} (\<|%3C|%3E|%00|%2e%2e) [NC,OR]
+    RewriteCond %{QUERY_STRING} (union|select|insert|drop|delete|update|cast|create|modify|rename|alter|script) [NC]
+    # RewriteRule .* - [F]
+</IfModule>
+
+# Bloquear acceso a archivos ocultos (que empiezan con un punto)
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# Bloquear archivos de configuración sensibles
+<FilesMatch "(^\.htaccess|\.htpasswd|\.env|\.git|composer\.json|composer\.lock|phpunit\.xml)$">
+    Require all denied
+</FilesMatch>
+
+# Bloquear el acceso al archivo .htaccess
+<Files ".htaccess">
+    Require all denied
+</Files>
+
+# Desactivar encabezados de servidor expuestos
+Header unset Server
+Header always unset X-Powered-By

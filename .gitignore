@@ -1,0 +1,12 @@
+vendor/
+uploads/
+
+.DS_Store
+*.log
+
+db/*.sql
+db/Config.txt
+
+.env
+.env.*
+!.env.example

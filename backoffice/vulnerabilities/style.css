@@ -1,0 +1,175 @@
+
+        /* Estilos para los semáforos */
+        .semaforo-verde { color: #28a745; font-size: 1.2rem; }
+        .semaforo-amarillo { color: #ffc107; font-size: 1.2rem; }
+        .semaforo-rojo { color: #dc3545; font-size: 1.2rem; }
+        
+        /* Estilo para pestañas tipo Google */
+        .google-tabs {
+            display: flex;
+            border-bottom: 1px solid #dadce0;
+            margin-bottom: 0;
+            background-color: #ffffff;
+            padding: 0;
+        }
+        
+        .google-tab {
+            background: none;
+            border: none;
+            padding: 12px 24px;
+            color: #5f6368;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+            border-radius: 8px 8px 0 0;
+            margin-right: 4px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .google-tab:hover {
+            background-color: #f8f9fa;
+            color: #202124;
+        }
+        
+        .google-tab.active {
+            color: #1a73e8;
+            background-color: #ffffff;
+            border-bottom: 2px solid #1a73e8;
+        }
+        
+        .google-tab i {
+            font-size: 16px;
+        }
+        
+        /* Estilos para la tabla */
+        .custom-table-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            margin: 0;
+        }
+        
+        .custom-table thead th {
+            background-color: #ffffff;
+            color: #202124;
+            font-weight: bold;
+            text-align: center;
+            padding: 16px 12px;
+            border-bottom: 2px solid #e8eaed;
+            font-size: 14px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .custom-table tbody td {
+            padding: 12px;
+            border-bottom: 1px solid #e8eaed;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+        
+        .custom-table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        /* Estilos para campos clickeables */
+        .clickeable-field {
+            cursor: pointer;
+            text-decoration: underline;
+            color: #1a73e8;
+        }
+        
+        .clickeable-field:hover {
+            color: #1557b0;
+        }
+        
+        /* Indicador de información faltante */
+        .missing-info {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .missing-info::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: #ff9500;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+        /* Estilos para el buscador */
+        .search-container {
+            padding: 16px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e8eaed;
+        }
+        
+        .search-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px 16px;
+            border: 1px solid #dadce0;
+            border-radius: 24px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+        
+        .search-input:focus {
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+        }
+        
+        /* Contador de operaciones */
+        .operations-counter {
+            padding: 16px;
+            background-color: #ffffff;
+            font-weight: 500;
+            color: #202124;
+            border-bottom: 1px solid #e8eaed;
+        }
+        
+        /* Ocultar contenedores de tabla */
+        .tabla-container {
+            display: none;
+        }
+        .tabla-container.active {
+            display: block;
+        }
+        
+        /* Estilos responsive */
+        @media (max-width: 768px) {
+            .google-tabs {
+                flex-wrap: wrap;
+                padding: 0 8px;
+            }
+            
+            .google-tab {
+                font-size: 12px;
+                padding: 10px 16px;
+            }
+            
+            .custom-table {
+                font-size: 12px;
+            }
+            
+            .custom-table thead th,
+            .custom-table tbody td {
+                padding: 8px;
+            }
+        }
